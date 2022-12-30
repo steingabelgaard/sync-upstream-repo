@@ -19,7 +19,7 @@ fi
 if [[ -z "$DOWNSTREAM_BRANCH" ]]; then
   echo "Missing \$DOWNSTREAM_BRANCH"
   echo "Default to ${UPSTREAM_BRANCH}"
-  DOWNSTREAM_BREANCH=UPSTREAM_BRANCH
+  DOWNSTREAM_BRANCH=UPSTREAM_BRANCH
 fi
 
 if ! echo "$UPSTREAM_REPO" | grep '\.git'; then
@@ -41,7 +41,7 @@ git remote add upstream "$UPSTREAM_REPO"
 git fetch ${FETCH_ARGS} upstream
 git remote -v
 
-git checkout ${DOWNSTREAM_BRANCH}
+git checkout origin/${DOWNSTREAM_BRANCH}
 
 case ${SPAWN_LOGS} in
   (true)    echo -n "sync-upstream-repo https://github.com/dabreadman/sync-upstream-repo keeping CI alive."\
